@@ -5,7 +5,7 @@ module GitServe
   module KeyFile
     def KeyFile.add(key, user, repo)
       key_line = "command=\"/usr/bin/gitserve #{user} #{repo} rw\",no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty #{key}"
-      delete_key key if find_key key
+      delete key if find key
       File.open( AUTHORIZED_KEYS, 'a') {|f|
         f.puts key_line
       }
