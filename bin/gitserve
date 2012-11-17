@@ -1,17 +1,21 @@
 #!/usr/bin/env ruby
  
 # user and permissions are passed from authorized_keys
- 
+
 user = ARGV[0]
-permissions = ARGV[1]
+repo = ARGV[1]
+permissions = ARGV[2]
 command = ENV['SSH_ORIGINAL_COMMAND']
-abort unless user and permissions and command
+
+abort "Missing arguments" unless user and repo and permissions and command
  
 # check the supplied command contains a valid git action
  
 valid_actions = ['git-receive-pack', 'git-upload-pack']
 action = command.split[0]
+repo_accessed = command.split[1]
 abort unless valid_actions.include? action
+abort unless repo == repo_accessed
  
 # check the permissions for this user
  
