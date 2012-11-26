@@ -1,3 +1,6 @@
+Actually... this is useless.  May as well use [gitolite](https://github.com/sitaramc/gitolite).
+===========================================================
+
 gitserve
 ========
 
